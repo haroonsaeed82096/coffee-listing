@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import CoffeeCard from "./CoffeeCard";
+import type { Coffee } from "../types/types";
 const CoffeeList = () => {
-  const [coffeeList, setCoffeeList] = useState<any[]>([]);
-  const [filteredCoffeeList, setFilteredCoffeeList] = useState<any[]>([]);
+  const [coffeeList, setCoffeeList] = useState<Coffee[]>([]);
+  const [filteredCoffeeList, setFilteredCoffeeList] = useState<Coffee[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

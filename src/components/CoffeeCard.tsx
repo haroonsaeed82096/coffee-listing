@@ -1,13 +1,4 @@
-interface Coffee {
-  id: number;
-  name: string;
-  image: string;
-  price: string;
-  rating: number;
-  votes: number;
-  popular: boolean;
-  available: boolean;
-}
+import type { Coffee } from "../types/types";
 export default function CoffeeCard(props: { coffeeList: Coffee[] }) {
   const { coffeeList } = props;
   return (
