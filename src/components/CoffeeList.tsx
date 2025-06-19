@@ -9,7 +9,7 @@ const CoffeeList = () => {
   useEffect(() => {
     let mounted = true;
 
-    fetch("public/data.json")
+    fetch(`${import.meta.env.BASE_URL}data.json`)
       .then((res) => res.json())
       .then((data) => {
         if (mounted) {
