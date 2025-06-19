@@ -2,24 +2,41 @@ import { useState, useEffect } from "react";
 import CoffeeCard from "./CoffeeCard";
 const CoffeeList = () => {
   const [coffeeList, setCoffeeList] = useState<any[]>([]);
+  const [filteredCoffeeList, setFilteredCoffeeList] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/data.json")
+    let mounted = true;
+
+    fetch("public/data.json")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setCoffeeList(data.coffeeList);
-        setIsLoading(false);
+        if (mounted) {
+          setCoffeeList(data.coffeeList);
+          setFilteredCoffeeList(data.coffeeList);
+          setIsLoading(false);
+        }
       })
       .catch((error) => {
         console.error(error);
       });
+
+    return () => {
+      mounted = false;
+    };
   }, []);
   if (isLoading) {
     return <div className="text-center text-white">Loading...</div>;
   }
 
+  function handleAvailableProducts() {
+    const availableProducts = coffeeList.filter((p) => p.available);
+    setFilteredCoffeeList(availableProducts);
+  }
+
+  function handleAllProducts() {
+    setFilteredCoffeeList(coffeeList);
+  }
   return (
     <>
       <div className="mb-4 text-center w-1/2 mx-auto text-[#111315]">
@@ -30,7 +47,23 @@ const CoffeeList = () => {
           and shipped fresh weekly.
         </p>
       </div>
-      <CoffeeCard coffeeList={coffeeList} />;
+      <div>
+        <button
+          onClick={handleAllProducts}
+          type="button"
+          className="text-[#FEF7EE] bg-[#4D5562] hover:bg-[#6F757C] hover:text-[#BEE3CC] font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        >
+          All Products
+        </button>
+        <button
+          onClick={handleAvailableProducts}
+          type="button"
+          className="text-[#FEF7EE] bg-[#4D5562] hover:bg-[#6F757C] hover:text-[#BEE3CC] font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        >
+          Available Now
+        </button>
+      </div>
+      <CoffeeCard coffeeList={filteredCoffeeList} />;
     </>
   );
 };
