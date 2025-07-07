@@ -1,18 +1,24 @@
-# Coffee List
+# ☕ Coffee Listing App
 
-This project allows users to view a list of coffees, each with a rating and review. The list is designed to be easy to use and navigate, with a simple and intuitive interface.
+A responsive and visually appealing web application that displays a list of coffee products using **React.js**. The app features elegant design and modular components to showcase different types of coffee items, making it ideal for use in e-commerce interfaces or product galleries.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-## Technologies Used
+[Click here to view the live project](https://haroonsaeed82096.github.io/coffee-listing/)  
+*(Hosted via GitHub Pages)*
 
-ReactJS, Tailwind, Typescript
+## 🖼️ Features
 
-```
+- 🧾 Displays a curated list of coffee items with names, images, and prices
+- 📱 Fully responsive layout across devices
+- ⚛️ Built with React functional components and hooks
+- 🧼 Clean and minimal UI/UX design
+- 🔁 Easy to extend with new items or features
 
-## Getting Started
+## 🛠️ Tech Stack
 
-- Clone the repository: git clone https://github.com/haroonsaeed82096/coffee-listing.git
-- Install dependencies: npm install
-- Start the application: npm run dev
-```
+- **Frontend:** React.js, JSX, CSS
+- **Deployment:** GitHub Pages
+
+## 📁 Folder Structure
+
